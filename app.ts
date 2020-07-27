@@ -1,14 +1,13 @@
-const symbol: string = '#';
-const strLength: number = 7;
+type ValidSymbol = '#' | '$' | '@';
 
-function generateRandomId() {
+function generateRandomId(symbol: ValidSymbol, strLength: number): string {
   return symbol + Math.random().toString(36).substr(2, strLength);
 }
 
 function main() {
   const app = document.getElementById('app');
   setInterval(() => {
-    app.innerHTML = generateRandomId();
+    app.innerHTML = generateRandomId('#', 7);
   }, 1000);
 }
 
