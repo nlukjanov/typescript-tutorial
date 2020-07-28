@@ -1,4 +1,9 @@
 "use strict";
+function identity(arg) {
+    return arg;
+}
+identity(12);
+identity('Nik');
 function generateRandomId(optionsOrSymbol) {
     if (typeof optionsOrSymbol === 'string') {
         return optionsOrSymbol + Math.random().toString(36).substr(2, 7);
