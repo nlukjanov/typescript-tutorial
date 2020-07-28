@@ -1,9 +1,4 @@
-type ValidSymbol = '#' | '$' | '@';
-
-interface GenerateConfig {
-  symbol: ValidSymbol;
-  strLength: number;
-}
+import { generateRandomId } from './utils';
 
 function identity<T>(arg: T): T {
   return arg;
@@ -11,20 +6,6 @@ function identity<T>(arg: T): T {
 
 identity<number>(12);
 identity<string>('Nik');
-
-function generateRandomId(symbol: ValidSymbol, strLength?: number): string;
-function generateRandomId(options: GenerateConfig): string;
-function generateRandomId(
-  optionsOrSymbol: GenerateConfig | ValidSymbol
-): string {
-  if (typeof optionsOrSymbol === 'string') {
-    return optionsOrSymbol + Math.random().toString(36).substr(2, 7);
-  }
-  return (
-    optionsOrSymbol.symbol +
-    Math.random().toString(36).substr(2, optionsOrSymbol.strLength)
-  );
-}
 
 console.log(generateRandomId('#', 12));
 

@@ -1,16 +1,9 @@
-"use strict";
+import { generateRandomId } from './utils';
 function identity(arg) {
     return arg;
 }
 identity(12);
 identity('Nik');
-function generateRandomId(optionsOrSymbol) {
-    if (typeof optionsOrSymbol === 'string') {
-        return optionsOrSymbol + Math.random().toString(36).substr(2, 7);
-    }
-    return (optionsOrSymbol.symbol +
-        Math.random().toString(36).substr(2, optionsOrSymbol.strLength));
-}
 console.log(generateRandomId('#', 12));
 function userAlert() {
     alert('Hello');
