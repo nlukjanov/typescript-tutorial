@@ -20,9 +20,10 @@ function main() {
   const app = document.getElementById('app');
   setInterval(() => {
     if (app) {
-      app.innerHTML = generateRandomId({ symbol: '#', strLength: 7 });
+      app.innerHTML =
+        'by Nik' + ' ' + generateRandomId({ symbol: '#', strLength: 7 });
     }
   }, 1000);
 }
 
-document.addEventListener('DOMContentLoaded', main);
+main();
