@@ -1,3 +1,4 @@
+import { random } from 'lodash';
 import { generateRandomId, Component } from './utils';
 
 function identity<T>(arg: T): T {
@@ -16,11 +17,11 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-function prop(x, name) {
+function prop(x: any, name: any) {
   console.log(x, name);
 }
 
-function param(x, name, index) {
+function param(x: any, name: any, index: any) {
   console.log(x, name, index);
 }
 
@@ -28,13 +29,13 @@ function param(x, name, index) {
   id: 'app'
 })
 class App {
-  @prop
-  static version: string;
-  onInit(@param el: HTMLElement | null): void {
+  onInit(el: HTMLElement | null): void {
     setInterval(() => {
       if (el) {
         el.innerHTML =
-          'by Nik' + ' ' + generateRandomId({ symbol: '#', strLength: 7 });
+          'by Nik' +
+          ' ' +
+          generateRandomId({ symbol: '#', strLength: random(7, 10) });
       }
     }, 1000);
   }
