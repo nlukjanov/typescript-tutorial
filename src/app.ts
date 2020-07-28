@@ -17,15 +17,11 @@ function userAlert2(): never {
 }
 
 class App {
-  id: string;
-  constructor() {
-    this.id = 'app';
-  }
+  static id = 'app';
 }
 
 function main(ComponentClass) {
-  const cmp = new ComponentClass();
-  const app = document.getElementById(cmp.id);
+  const app = document.getElementById(ComponentClass.id);
   setInterval(() => {
     if (app) {
       app.innerHTML =
