@@ -16,16 +16,11 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-class Component {
-  constructor() {
-    this.log();
-  }
-  log() {
-    console.log('Component created');
-  }
+interface Component {
+  onInit(el: HTMLElement | null): void;
 }
 
-class App extends Component {
+class App implements Component {
   static id = 'app';
   onInit(el: HTMLElement | null): void {
     setInterval(() => {
