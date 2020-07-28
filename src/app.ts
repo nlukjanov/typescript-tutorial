@@ -16,9 +16,16 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
+function Component(options: { id: string }) {
+  return (target) => {
+    target.id = options.id;
+  };
+}
 
+@Component({
+  id: 'app'
+})
 class App {
-  static id = 'app'
   onInit(el: HTMLElement | null): void {
     setInterval(() => {
       if (el) {
