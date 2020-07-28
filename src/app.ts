@@ -18,16 +18,20 @@ function userAlert2(): never {
 
 class App {
   static id = 'app';
+  onInit(el: HTMLElement | null): void {
+    setInterval(() => {
+      if (el) {
+        el.innerHTML =
+          'by Nik' + ' ' + generateRandomId({ symbol: '#', strLength: 7 });
+      }
+    }, 1000);
+  }
 }
 
 function main(ComponentClass) {
-  const app = document.getElementById(ComponentClass.id);
-  setInterval(() => {
-    if (app) {
-      app.innerHTML =
-        'by Nik' + ' ' + generateRandomId({ symbol: '#', strLength: 7 });
-    }
-  }, 1000);
+  const el = document.getElementById(ComponentClass.id);
+  const cmp = new ComponentClass();
+  cmp.onInit(el);
 }
 
 main(App);
