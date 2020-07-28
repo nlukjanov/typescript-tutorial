@@ -1,9 +1,11 @@
 type ValidSymbol = '#' | '$' | '@';
 
-function generateRandomId(options: {
+interface GenerateConfig {
   symbol: ValidSymbol;
   strLength: number;
-}): string {
+}
+
+function generateRandomId(options: GenerateConfig): string {
   return (
     options.symbol + Math.random().toString(36).substr(2, options.strLength)
   );
