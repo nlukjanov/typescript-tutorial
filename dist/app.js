@@ -1,7 +1,12 @@
 "use strict";
-function generateRandomId(options) {
-    return (options.symbol + Math.random().toString(36).substr(2, options.strLength));
+function generateRandomId(optionsOrSymbol) {
+    if (typeof optionsOrSymbol === 'string') {
+        return optionsOrSymbol + Math.random().toString(36).substr(2, 7);
+    }
+    return (optionsOrSymbol.symbol +
+        Math.random().toString(36).substr(2, optionsOrSymbol.strLength));
 }
+console.log(generateRandomId('#', 12));
 function userAlert() {
     alert('Hello');
 }

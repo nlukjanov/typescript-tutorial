@@ -5,11 +5,21 @@ interface GenerateConfig {
   strLength: number;
 }
 
-function generateRandomId(options: GenerateConfig): string {
+function generateRandomId(symbol: ValidSymbol, strLength?: number): string;
+function generateRandomId(options: GenerateConfig): string;
+function generateRandomId(
+  optionsOrSymbol: GenerateConfig | ValidSymbol
+): string {
+  if (typeof optionsOrSymbol === 'string') {
+    return optionsOrSymbol + Math.random().toString(36).substr(2, 7);
+  }
   return (
-    options.symbol + Math.random().toString(36).substr(2, options.strLength)
+    optionsOrSymbol.symbol +
+    Math.random().toString(36).substr(2, optionsOrSymbol.strLength)
   );
 }
+
+console.log(generateRandomId('#', 12));
 
 function userAlert(): void {
   alert('Hello');
