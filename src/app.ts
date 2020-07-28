@@ -16,18 +16,21 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-function enumerable(isEnumerable: boolean) {
-  return (target, propertyKey, propertyDescriptor: PropertyDescriptor) => {
-    propertyDescriptor.enumerable = isEnumerable;
-  };
+function prop(x, name) {
+  console.log(x, name);
+}
+
+function param(x, name, index) {
+  console.log(x, name, index);
 }
 
 @Component({
   id: 'app'
 })
 class App {
-  @enumerable(false)
-  onInit(el: HTMLElement | null): void {
+  @prop
+  static version: string;
+  onInit(@param el: HTMLElement | null): void {
     setInterval(() => {
       if (el) {
         el.innerHTML =
