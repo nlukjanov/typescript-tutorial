@@ -1,6 +1,6 @@
 type ValidSymbol = '#' | '$' | '@';
 
-function generateRandomId(symbol: ValidSymbol, strLength: number): string {
+function generateRandomId(symbol: ValidSymbol, strLength: number = 7): string {
   return symbol + Math.random().toString(36).substr(2, strLength);
 }
 

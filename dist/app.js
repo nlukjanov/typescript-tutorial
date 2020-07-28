@@ -1,5 +1,5 @@
 "use strict";
-function generateRandomId(symbol, strLength) {
+function generateRandomId(symbol, strLength = 7) {
     return symbol + Math.random().toString(36).substr(2, strLength);
 }
 function userAlert() {
