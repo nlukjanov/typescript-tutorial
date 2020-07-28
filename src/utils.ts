@@ -5,7 +5,10 @@ export interface GenerateConfig {
   strLength: number;
 }
 
-export function generateRandomId(symbol: ValidSymbol, strLength: number): string;
+export function generateRandomId(
+  symbol: ValidSymbol,
+  strLength: number
+): string;
 export function generateRandomId(options: GenerateConfig): string;
 export function generateRandomId(
   optionsOrSymbol: GenerateConfig | ValidSymbol
@@ -17,4 +20,10 @@ export function generateRandomId(
     optionsOrSymbol.symbol +
     Math.random().toString(36).substr(2, optionsOrSymbol.strLength)
   );
+}
+
+export function Component(options: { id: string }) {
+  return (target: any) => {
+    target.id = options.id;
+  };
 }

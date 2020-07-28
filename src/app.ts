@@ -1,4 +1,4 @@
-import { generateRandomId } from './utils';
+import { generateRandomId, Component } from './utils';
 
 function identity<T>(arg: T): T {
   return arg;
@@ -16,9 +16,9 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-function Component(options: { id: string }) {
-  return (target) => {
-    target.id = options.id;
+function enumerable(isEnumerable: boolean) {
+  return (target, propertyKey, propertyDescriptor: PropertyDescriptor) => {
+    propertyDescriptor.enumerable = isEnumerable;
   };
 }
 
@@ -26,6 +26,7 @@ function Component(options: { id: string }) {
   id: 'app'
 })
 class App {
+  @enumerable(false)
   onInit(el: HTMLElement | null): void {
     setInterval(() => {
       if (el) {
@@ -36,7 +37,11 @@ class App {
   }
 }
 
-function main(ComponentClass) {
+for (let key in App.prototype) {
+  console.log(key);
+}
+
+function main(ComponentClass: any) {
   const el = document.getElementById(ComponentClass.id);
   const cmp = new ComponentClass();
   cmp.onInit(el);
