@@ -1,6 +1,6 @@
 "use strict";
-function generateRandomId(symbol, strLength = 7) {
-    return symbol + Math.random().toString(36).substr(2, strLength);
+function generateRandomId(options) {
+    return (options.symbol + Math.random().toString(36).substr(2, options.strLength));
 }
 function userAlert() {
     alert('Hello');
@@ -12,7 +12,7 @@ function main() {
     const app = document.getElementById('app');
     setInterval(() => {
         if (app) {
-            app.innerHTML = generateRandomId('#', 7);
+            app.innerHTML = generateRandomId({ symbol: '#', strLength: 7 });
         }
     }, 1000);
 }
