@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.14.158",
     "awesome-typescript-loader": "^5.2.1",
     "typescript": "^3.9.7",
     "webpack": "^4.44.0",
