@@ -16,8 +16,16 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-function main() {
-  const app = document.getElementById('app');
+class App {
+  id: string;
+  constructor() {
+    this.id = 'app';
+  }
+}
+
+function main(ComponentClass) {
+  const cmp = new ComponentClass();
+  const app = document.getElementById(cmp.id);
   setInterval(() => {
     if (app) {
       app.innerHTML =
@@ -26,4 +34,4 @@ function main() {
   }, 1000);
 }
 
-main();
+main(App);
