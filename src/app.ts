@@ -16,12 +16,9 @@ function userAlert2(): never {
   throw new Error('Fail');
 }
 
-interface Component {
-  onInit(el: HTMLElement | null): void;
-}
 
-class App implements Component {
-  static id = 'app';
+class App {
+  static id = 'app'
   onInit(el: HTMLElement | null): void {
     setInterval(() => {
       if (el) {
